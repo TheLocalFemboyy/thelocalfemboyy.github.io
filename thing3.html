@@ -6,6 +6,106 @@
   <title>carnet.lol</title>
   <link rel="icon" type="image/svg+xml" href="favicon.png">
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* ---------- Buy This Domain kawaii extras (scoped to this page) ---------- */
+
+    .sale-hero {
+      text-align: center;
+      padding: 8px 0 32px;
+    }
+
+    .sale-hero h1 {
+      font-size: 40px;
+      margin: 0 0 8px;
+    }
+
+    .sale-hero .sparkle {
+      display: inline-block;
+      animation: bounce 1.6s ease-in-out infinite;
+    }
+
+    .sale-hero p {
+      color: var(--color-muted);
+      max-width: none;
+      margin: 0 auto;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-6px) rotate(8deg); }
+    }
+
+    .sale-card {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      background: #ffffff;
+      border: 1px solid var(--color-border);
+      border-left: 6px solid var(--color-accent);
+      border-radius: 14px;
+      padding: 28px 32px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .sale-card .sale-mail-link {
+      flex-shrink: 0;
+      display: block;
+      border-radius: 999px;
+      overflow: hidden;
+      width: 100px;
+      height: 100px;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      box-shadow: 0 4px 14px rgba(255,150,180,0.25);
+    }
+
+    .sale-card .sale-mail-link:hover {
+      transform: scale(1.06) rotate(-4deg);
+    }
+
+    .sale-card .sale-mail-link img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .sale-card .sale-text p {
+      margin: 0 0 10px;
+      max-width: none;
+    }
+
+    .sale-card .sale-text p:last-child {
+      margin-bottom: 0;
+      font-weight: 600;
+    }
+
+    .sale-tags {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .sale-tag {
+      display: inline-block;
+      background: var(--color-accent);
+      color: #a8355e;
+      font-weight: 600;
+      font-size: 12px;
+      padding: 5px 14px;
+      border-radius: 999px;
+    }
+
+    @media (max-width: 560px) {
+      .sale-card {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -25,16 +125,26 @@
   </header>
 
 <main>
-    <h1>Buy this domain!</h1>
-    <p>
-      <a href="thing4.html">
-        <img src="contact.jpg" style="float:right;width:100px;height:100px;">
+    <div class="sale-hero">
+      <h1><span class="sparkle">🍄</span> Buy this domain! <span class="sparkle">🎀</span></h1>
+      <p>in todays world everything has a price... even znanje that nestaje</p>
+    </div>
+
+    <div class="sale-card">
+      <a href="thing4.html" class="sale-mail-link" aria-label="Contact us to buy this domain">
+        <img src="contact.jpg" alt="Contact">
       </a>
-    </p>
-    <p>In todays world everything has a price! 🍄</p>
-    <br>
-    <p>In case you want it... We could figure out something. 🎀</p>
-    <p>Click on the white mail icon!</p>
+      <div class="sale-text">
+        <p>In case you want it... we could figure out something. 🎀</p>
+        <p>Click on the white mail icon to get in touch!</p>
+      </div>
+    </div>
+
+    <div class="sale-tags">
+      <span class="sale-tag">not a scam</span>
+      <span class="sale-tag">probably</span>
+      <span class="sale-tag">negotiable</span>
+    </div>
 </main>
 
 
