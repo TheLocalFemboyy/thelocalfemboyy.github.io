@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>carnet.lol</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.png">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ---------- Servers page kawaii extras (scoped to this page) ---------- */
+
+    .srv-hero {
+      text-align: center;
+      padding: 8px 0 32px;
+    }
+
+    .srv-hero h1 {
+      font-size: 40px;
+      margin: 0 0 8px;
+    }
+
+    .srv-hero .sparkle {
+      display: inline-block;
+      animation: bounce 1.6s ease-in-out infinite;
+    }
+
+    .srv-hero p {
+      color: var(--color-muted);
+      max-width: none;
+      margin: 0 auto;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-6px) rotate(8deg); }
+    }
+
+    .srv-section-title {
+      font-size: 22px;
+      margin: 0 0 18px;
+      text-align: center;
+    }
+
+    .srv-section {
+      margin-bottom: 48px;
+    }
+
+    /* ----- Server cards ----- */
+
+    .srv-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .srv-card {
+      background: #ffffff;
+      border: 1px solid var(--color-border);
+      border-left: 6px solid var(--color-accent);
+      border-radius: 14px;
+      padding: 22px 24px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-left-color 0.15s ease;
+    }
+
+    .srv-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(255,150,180,0.18);
+      border-left-color: #ff8fb1;
+    }
+
+    .srv-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .srv-game {
+      display: inline-block;
+      background: var(--color-accent);
+      color: #a8355e;
+      font-weight: 600;
+      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: 999px;
+    }
+
+    .srv-status {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--color-muted);
+    }
+
+    .srv-status .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #4caf50;
+      display: inline-block;
+    }
+
+    .srv-status.offline .dot {
+      background: #cccccc;
+    }
+
+    .srv-card h2 {
+      font-size: 19px;
+      margin: 0 0 6px;
+    }
+
+    .srv-card p {
+      margin: 0 0 12px;
+      max-width: none;
+      color: var(--color-muted);
+    }
+
+    .srv-connect {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      background: var(--color-bg);
+      border: 1px dashed var(--color-border);
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: 13px;
+      font-family: monospace;
+    }
+
+    .srv-connect .copy-btn {
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-size: 13px;
+      color: #a8355e;
+      font-family: inherit;
+      font-weight: 600;
+      padding: 0;
+    }
+
+    .srv-connect .copy-btn:hover {
+      text-decoration: underline;
+    }
+
+    .srv-connect .copy-btn.copied {
+      animation: copy-blink 0.5s ease 2;
+    }
+
+    @keyframes copy-blink {
+      0%, 100% { opacity: 1; color: #a8355e; }
+      50% { opacity: 0.25; color: #4caf50; }
+    }
+
+    /* ----- Socials ----- */
+
+    .socials-grid {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .social-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #ffffff;
+      border: 1px solid var(--color-border);
+      border-radius: 999px;
+      padding: 12px 22px 12px 14px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      min-width: 220px;
+    }
+
+    .social-card:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 8px 20px rgba(255,150,180,0.18);
+    }
+
+    .social-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+      color: #ffffff;
+    }
+
+    .social-icon.discord { background: #5865F2; }
+	.social-icon.github { background: #22272e; }
+    .social-icon.steam { background: #1b2838; }
+    .social-icon.instagram { background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4); }
+
+    .social-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .social-text .social-label {
+      font-size: 11px;
+      color: var(--color-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .social-text .social-name {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    @media (max-width: 560px) {
+      .srv-grid {
+        grid-template-columns: 1fr;
+      }
+      .social-card {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+  <a href="index.html">
+    <img src="logo.jpg" alt="Nema znanja..." class="logo">
+	</a>
+    <nav class="site-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="thing.html" class="active">Servers :3</a></li>
+		<li><a href="thing2.html">News!?</a></li>
+        <li><a href="thing3.html">Buy this domain!</a></li>
+        <li><a href="thing4.html">Contact!</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="srv-hero">
+      <h1><span class="sparkle">🎮</span> Servers :3 <span class="sparkle">🕹️</span></h1>
+      <p>come play on my totally legit game servers, powered by pure znanje</p>
+    </div>
+
+    <section class="srv-section">
+      <h2 class="srv-section-title">🖥️ Game servers</h2>
+      <div class="srv-grid">
+
+        <div class="srv-card">
+          <div class="srv-card-top">
+            <span class="srv-game">example</span>
+            <span class="srv-status"><span class="dot"></span> online</span>
+          </div>
+          <h2>example</h2>
+          <p>example 🍄</p>
+          <div class="srv-connect">
+            <span>example</span>
+            <button class="copy-btn" onclick="copyConnect(this, 'example')">copy</button>
+          </div>
+        </div>
+
+        <div class="srv-card">
+          <div class="srv-card-top">
+            <span class="srv-game">example</span>
+            <span class="srv-status offline"><span class="dot"></span> offline</span>
+          </div>
+          <h2>example</h2>
+          <p>example 🎀</p>
+          <div class="srv-connect">
+            <span>example</span>
+            <button class="copy-btn" onclick="copyConnect(this, 'example')">copy</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="srv-section">
+      <h2 class="srv-section-title">🎀 Find me elsewhere</h2>
+      <div class="socials-grid">
+
+        <a class="social-card" href="https://github.com/TheLocalFemboyy" target="_blank">
+          <span class="social-icon github">💻</span>
+          <span class="social-text">
+            <span class="social-label">Github</span>
+            <span class="social-name">TheLocalFemboy</span>
+          </span>
+        </a>
+		
+		<a class="social-card" href="https://discord.gg/r2ZJDTyTKc" target="_blank">
+          <span class="social-icon discord">💬</span>
+          <span class="social-text">
+            <span class="social-label">Discord</span>
+            <span class="social-name">carnet.lol</span>
+          </span>
+        </a>
+
+        <a class="social-card" href="https://steamcommunity.com/id/thelocalfemboy/" target="_blank">
+          <span class="social-icon steam">🎮</span>
+          <span class="social-text">
+            <span class="social-label">Steam</span>
+            <span class="social-name">TheLocalFemboy</span>
+          </span>
+        </a>
+
+        <a class="social-card" href="https://instagram.com/filippoki" target="_blank">
+          <span class="social-icon instagram">📸</span>
+          <span class="social-text">
+            <span class="social-label">Instagram</span>
+            <span class="social-name">@filippoki</span>
+          </span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+
+  <footer class="site-footer">
+    Disclaimer: this site is a "sprdačina" and therefore not affiliated with "<a href="https://carnet.hr" target="_blank">Hrvatska akademska i istraživačka mreža - CARNET</a>"!
+  </footer>
+
+  <script>
+    function copyConnect(btn, text) {
+      navigator.clipboard.writeText(text);
+      const original = btn.textContent;
+      btn.textContent = 'copied!';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.classList.remove('copied');
+        btn.textContent = original;
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
