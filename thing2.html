@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>carnet.lol</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.png">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ---------- News page kawaii extras (scoped to this page) ---------- */
+
+    .news-hero {
+      text-align: center;
+      padding: 8px 0 40px;
+    }
+
+    .news-hero h1 {
+      font-size: 40px;
+      margin: 0 0 8px;
+    }
+
+    .news-hero .sparkle {
+      display: inline-block;
+      animation: bounce 1.6s ease-in-out infinite;
+    }
+
+    .news-hero p {
+      color: var(--color-muted);
+      max-width: none;
+      margin: 0 auto;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-6px) rotate(8deg); }
+    }
+
+    .news-feed {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .news-card {
+      position: relative;
+      background: #ffffff;
+      border: 1px solid var(--color-border);
+      border-left: 6px solid var(--color-accent);
+      border-radius: 14px;
+      padding: 20px 24px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-left-color 0.15s ease;
+    }
+
+    .news-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(255,150,180,0.18);
+      border-left-color: #ff8fb1;
+    }
+
+    .news-card .news-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+      font-size: 12px;
+      color: var(--color-muted);
+      letter-spacing: 0.02em;
+    }
+
+    .news-tag {
+      display: inline-block;
+      background: var(--color-accent);
+      color: #a8355e;
+      font-weight: 600;
+      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: 999px;
+    }
+
+    .news-card h2 {
+      font-size: 19px;
+      margin: 0 0 8px;
+    }
+
+    .news-card p {
+      margin: 0;
+      color: var(--color-text);
+      max-width: 70ch;
+    }
+
+    .news-card .news-emoji {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      font-size: 20px;
+      opacity: 0.8;
+    }
+
+    .news-footer-note {
+      text-align: center;
+      margin: 40px auto 0;
+      max-width: none;
+      font-size: 13px;
+      color: var(--color-muted);
+    }
+
+    .news-footer-note .heart {
+      color: #ff8fb1;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+  <a href="index.html">
+    <img src="logo.jpg" alt="Nema znanja..." class="logo">
+	</a>
+    <nav class="site-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="thing.html">Servers :3</a></li>
+		<li><a href="thing2.html" class="active">News!?</a></li>
+        <li><a href="thing3.html">Buy this domain!</a></li>
+        <li><a href="thing4.html">Contact!</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="news-hero">
+      <h1><span class="sparkle">✨</span> News!? <span class="sparkle">✨</span></h1>
+      <p>owo what's this... totally real updates about totally real things happening on carnet.lol 🎀</p>
+    </div>
+
+    <section class="news-feed">
+
+      <article class="news-card">
+        <span class="news-emoji">🔥</span>
+        <div class="news-meta">
+          <span class="news-tag">mhm</span>
+          <span>mhm</span>
+        </div>
+        <h2>mhm</h2>
+        <p>mhm</p>
+      </article>
+
+      <article class="news-card">
+        <span class="news-emoji">🍄</span>
+        <div class="news-meta">
+          <span class="news-tag">example</span>
+          <span>example</span>
+        </div>
+        <h2>example</h2>
+        <p>example</p>
+      </article>
+
+      <article class="news-card">
+        <span class="news-emoji">🎀</span>
+        <div class="news-meta">
+          <span class="news-tag">woah</span>
+          <span>woah</span>
+        </div>
+        <h2>woah</h2>
+        <p>woah</p>
+      </article>
+
+      <article class="news-card">
+        <span class="news-emoji">📉</span>
+        <div class="news-meta">
+          <span class="news-tag">News!</span>
+          <span>4.9.2026. 14:44</span>
+        </div>
+        <h2>Znanje continues to nestaje</h2>
+        <p>Domain is registered and secured under my hands.</p>
+      </article>
+
+    </section>
+
+    <p class="news-footer-note">that's all for now <span class="heart">♡</span> come back later for more zajebancije</p>
+  </main>
+
+
+  <footer class="site-footer">
+    Disclaimer: this site is a "sprdačina" and therefore not affiliated with "<a href="https://carnet.hr" target="_blank">Hrvatska akademska i istraživačka mreža - CARNET</a>"!
+  </footer>
+</body>
+</html>
